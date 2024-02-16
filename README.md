@@ -1,4 +1,4 @@
-# Tarea1
+# Tarea1 9490-22-1479, Josué Vinicio Jerez Gómez
 Requisitos previos:
 
 1. Asegúrate de tener Python instalado en tu sistema.

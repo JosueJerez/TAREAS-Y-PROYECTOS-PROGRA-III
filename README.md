@@ -29,7 +29,7 @@ Requisitos previos:
      Mostrar lista
      Generar gráfico
      Salir
-  Selecciona una de las opciones ingresando el número correspondiente y sigue las instrucciones proporcionadas por el programa.
+   Selecciona una de las opciones ingresando el número correspondiente y sigue las instrucciones proporcionadas por el programa.
 6. Generación de Gráficos con Graphviz
   Después de cada operación de inserción o eliminación, el programa generará automáticamente una representación visual de la lista doblemente enlazada utilizando Graphviz (utilizar la opción "Generar gráfico").
   Los gráficos generados se guardarán como archivos de imagen en formato PNG en la misma carpeta donde se encuentra el archivo TAREA1_PROGRA3_JOSUE_JEREZ.py.

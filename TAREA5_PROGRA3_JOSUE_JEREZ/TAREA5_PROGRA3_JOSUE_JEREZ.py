@@ -106,31 +106,37 @@ avl_tree = AVLTree()
 # Ruta para cargar registros desde un archivo CSV
 @app.route('/cargar_csv', methods=['POST'])
 def cargar_csv():
-    data = request.json
-    csv_file = data.get('archivo_csv')
-    if not csv_file:
-        return jsonify({'error': 'No se proporcionó un archivo CSV'}), 400
+    try:
+        data = request.json
+        csv_file = data.get('archivo_csv')
+        if not csv_file:
+            return jsonify({'error': 'No se proporcionó un archivo CSV'}), 400
 
-    with open(csv_file, newline='') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            key = int(row['key'])
-            data = row['data']
-            avl_tree.insert(key, data)
+        with open(csv_file, newline='') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                key = int(row['key'])
+                data = row['data']
+                avl_tree.insert(key, data)
 
-    return jsonify({'message': 'Registros cargados correctamente'}), 200
+        return jsonify({'message': 'Registros cargados correctamente'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Ruta para insertar un registro manualmente
 @app.route('/insertar_registro', methods=['POST'])
 def insertar_registro():
-    data = request.json
-    key = int(data.get('key'))
-    data = data.get('data')
-    if key is None or data is None:
-        return jsonify({'error': 'Se requiere una clave (key) y datos (data) para insertar un registro'}), 400
+    try:
+        data = request.json
+        key = int(data.get('key'))
+        data = data.get('data')
+        if key is None or data is None:
+            return jsonify({'error': 'Se requiere una clave (key) y datos (data) para insertar un registro'}), 400
 
-    avl_tree.insert(key, data)
-    return jsonify({'message': 'Registro insertado correctamente'}), 201
+        avl_tree.insert(key, data)
+        return jsonify({'message': 'Registro insertado correctamente'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Ruta para buscar un registro por su identificador
 @app.route('/buscar_registro/<int:identificador>', methods=['GET'])

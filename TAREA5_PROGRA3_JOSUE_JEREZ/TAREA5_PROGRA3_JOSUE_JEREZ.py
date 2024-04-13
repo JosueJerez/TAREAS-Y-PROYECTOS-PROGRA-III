@@ -28,7 +28,29 @@ def cargar_csv():
 # Ruta para insertar un registro manualmente
 @app.route('/insertar_registro', methods=['POST'])
 def insertar_registro():
-    # Código para insertar un registro manualmente...
+    # Obtener los datos del JSON de la solicitud
+    data = request.json
+
+    # Verificar si los datos están presentes
+    if not data:
+        return jsonify({'error': 'No se proporcionaron datos en el cuerpo de la solicitud'}), 400
+
+    # Aquí puedes agregar tu lógica para insertar el registro en tu AVLTree
+    # Por ejemplo, podrías extraer la clave y los datos del JSON y luego llamar al método insert de tu AVLTree
+
+    # Ejemplo de cómo podrías extraer la clave y los datos del JSON
+    key = data.get('key')
+    data = data.get('data')
+
+    # Verificar si se proporcionaron la clave y los datos
+    if key is None or data is None:
+        return jsonify({'error': 'Se requiere una clave (key) y datos (data) para insertar un registro'}), 400
+
+    # Llamar al método insert de tu AVLTree con la clave y los datos
+    avl_tree.insert(key, data)
+
+    # Devolver una respuesta de éxito
+    return jsonify({'message': 'Registro insertado correctamente'}), 201
 
 # Ruta para buscar un registro por su identificador
 @app.route('/buscar_registro/<int:identificador>', methods=['GET'])

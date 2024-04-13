@@ -152,5 +152,10 @@ def info_grupo():
     }
     return jsonify(info), 200
 
+# Ruta para la página de inicio
+@app.route('/', methods=['GET'])
+def index():
+    return '¡La API está funcionando correctamente!'
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)

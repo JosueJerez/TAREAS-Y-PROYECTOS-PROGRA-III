@@ -114,7 +114,7 @@ def cargar_csv():
     with open(csv_file, newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            key = int(row['Date Rptd'])
+            key = int(row['key'])
             data = row['data']
             avl_tree.insert(key, data)
 

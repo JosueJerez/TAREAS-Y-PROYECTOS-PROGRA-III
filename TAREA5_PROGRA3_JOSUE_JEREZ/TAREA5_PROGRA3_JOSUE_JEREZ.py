@@ -114,8 +114,8 @@ def cargar_csv():
     with open(csv_file, newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            key = int(row['Date Rptd'])
-            data = row['Description']
+            key = int(row['key'])
+            data = row['data']
             avl_tree.insert(key, data)
 
     return jsonify({'message': 'Registros cargados correctamente'}), 200
@@ -151,6 +151,11 @@ def info_grupo():
         ]
     }
     return jsonify(info), 200
+
+# Ruta para la página de inicio
+@app.route('/', methods=['GET'])
+def pagina_inicio():
+    return '¡Bienvenido a mi API! Puedes acceder a las siguientes rutas: /cargar_csv, /insertar_registro, /buscar_registro/<identificador>, /info_grupo'
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)

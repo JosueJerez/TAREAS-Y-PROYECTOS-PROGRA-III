@@ -114,9 +114,9 @@ def cargar_csv():
     with open(csv_file, newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            key = int(row['key'])
+            date_rptd = int(row['Date Rptd'])
             data = row['data']
-            avl_tree.insert(key, data)
+            avl_tree.insert(date_rptd, data)
 
     return jsonify({'message': 'Registros cargados correctamente'}), 200
 
@@ -124,12 +124,12 @@ def cargar_csv():
 @app.route('/insertar_registro', methods=['POST'])
 def insertar_registro():
     data = request.json
-    key = int(data.get('key'))
+    date_rptd = int(data.get('Date Rptd'))
     data = data.get('data')
-    if key is None or data is None:
-        return jsonify({'error': 'Se requiere una clave (key) y datos (data) para insertar un registro'}), 400
+    if date_rptd is None or data is None:
+        return jsonify({'error': 'Se requiere una fecha reportada (Date Rptd) y datos (data) para insertar un registro'}), 400
 
-    avl_tree.insert(key, data)
+    avl_tree.insert(date_rptd, data)
     return jsonify({'message': 'Registro insertado correctamente'}), 201
 
 # Ruta para buscar un registro por su identificador

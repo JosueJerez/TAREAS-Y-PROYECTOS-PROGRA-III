@@ -114,8 +114,8 @@ def cargar_csv():
     with open(csv_file, newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            key = int(row['key'])
-            data = row['data']
+            key = int(row['Date Rptd'])
+            data = row['Description']
             avl_tree.insert(key, data)
 
     return jsonify({'message': 'Registros cargados correctamente'}), 200

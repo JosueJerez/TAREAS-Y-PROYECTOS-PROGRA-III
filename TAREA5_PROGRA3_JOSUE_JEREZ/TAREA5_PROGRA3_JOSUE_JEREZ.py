@@ -122,7 +122,7 @@ def cargar_csv():
             except ValueError:
                 return jsonify({'error': f'Formato de fecha y hora inválido: {date_rptd_str}'}), 400
 
-            data = row['data']
+            data = row['Date Rptd']
             avl_tree.insert(date_rptd, data)
 
     return jsonify({'message': 'Registros cargados correctamente'}), 200

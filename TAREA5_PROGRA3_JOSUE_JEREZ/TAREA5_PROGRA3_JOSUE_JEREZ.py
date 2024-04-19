@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import csv
+import datetime
 
 app = Flask(__name__)
 
@@ -114,7 +115,13 @@ def cargar_csv():
     with open(csv_file, newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            date_rptd = int(row['Date Rptd'])
+            # Convertir la cadena de fecha y hora en un objeto datetime
+            date_rptd_str = row['Date Rptd']
+            try:
+                date_rptd = datetime.datetime.strptime(date_rptd_str, '%m/%d/%Y %I:%M:%S %p')
+            except ValueError:
+                return jsonify({'error': f'Formato de fecha y hora inválido: {date_rptd_str}'}), 400
+
             data = row['data']
             avl_tree.insert(date_rptd, data)
 

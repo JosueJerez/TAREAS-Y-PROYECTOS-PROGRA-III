@@ -1,37 +1,65 @@
-# Tarea1 9490-22-1479, Josué Vinicio Jerez Gómez
-Requisitos previos:
+# API de Manejo de Registros
 
-1. Asegúrate de tener Python instalado en tu sistema.
-   Puedes descargarlo desde python.org e instalarlo siguiendo las instrucciones proporcionadas.
-   Asegúrate de haber instalado la biblioteca Graphviz. Puedes instalarla utilizando pip con el siguiente comando en la terminal:
-   pip install graphviz
+Esta es una API desarrollada en Flask para el manejo de registros utilizando una estructura de datos de Árbol AVL.
 
-3. Descarga y ubicación del archivo:
+## Descripción
 
-   Descarga el archivo TAREA1_PROGRA3_JOSUE_JEREZ.py y guárdalo en una ubicación de tu preferencia en tu sistema. Por ejemplo, puedes guardarlo en la carpeta TAREA1_PROGRA3_JOSUE_JEREZ dentro de la carpeta           Downloads.
+La API permite cargar registros desde un archivo CSV, insertar registros manualmente, buscar registros por identificador y obtener información sobre el grupo de desarrollo.
 
-3. Ejecución del programa:
+## Instalación
 
-   Descarga el archivo TAREA1_PROGRA3_JOSUE_JEREZ.py en tu computadora desde la plataforma de entrega de tareas.
-   Abre la terminal o línea de comandos en tu sistema operativo.
-   Navega a la ubicación donde se encuentra el archivo TAREA1_PROGRA3_JOSUE_JEREZ.py utilizando el comando cd seguido de la ruta completa de la carpeta.
+1. Clona el repositorio a tu máquina local:
 
-   ejemplo: cd ruta/donde/se/encuentra/el/archivo
+    ```
+    git clone https://github.com/tu-usuario/nombre-del-repo.git
+    ```
 
-   Una vez en la ubicación correcta, ejecuta el programa con el siguiente comando:
-   python TAREA1_PROGRA3_JOSUE_JEREZ.py
+2. Instala las dependencias necesarias:
 
-4. Interacción con el programa:
-   Al ejecutar el programa, se mostrará un menú interactivo en la terminal con las siguientes opciones:
-     Insertar al principio
-     Insertar al final
-     Eliminar por valor
-     Mostrar lista
-     Generar gráfico
-     Salir
-   Selecciona una de las opciones ingresando el número correspondiente y sigue las instrucciones proporcionadas por el programa.
-6. Generación de Gráficos con Graphviz
-  Después de cada operación de inserción o eliminación, el programa generará automáticamente una representación visual de la lista doblemente enlazada utilizando Graphviz (utilizar la opción "Generar gráfico").
-  Los gráficos generados se guardarán como archivos de imagen en formato PNG en la misma carpeta donde se encuentra el archivo TAREA1_PROGRA3_JOSUE_JEREZ.py.
+    ```
+    pip install -r requirements.txt
+    ```
 
-P.D espero que sea de su agrado este programa sinceramente tuve que buscar mucha información por mi solo para realizar este programa ya que no cuento con un grupo de trabajo y espero cualquier recomendación o consejos para ir mejorando los proyectos a futuro. Josué Jerez
+## Uso
+
+1. Ejecuta la aplicación:
+
+    ```
+    python app.py
+    ```
+
+2. Accede a las diferentes rutas de la API utilizando un cliente HTTP o navegador web.
+
+## Rutas Disponibles
+
+- **POST /cargar_csv:** Carga registros desde un archivo CSV.
+
+- **POST /insertar_registro:** Inserta un registro manualmente.
+
+- **GET /buscar_registro/<identificador>:** Busca un registro por su identificador.
+
+- **GET /info_grupo:** Obtiene información sobre el grupo de desarrollo.
+
+## Formato del Archivo CSV
+
+El archivo CSV debe tener las siguientes columnas:
+
+- `Date Rptd`: Fecha reportada en formato `mm/dd/yyyy hh:mm:ss AM/PM`.
+- `data`: Datos asociados al registro.
+
+## Contribución
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commits (`git commit -am 'Agrega nueva funcionalidad'`).
+4. Sube tus cambios al repositorio (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+## Integrantes del Grupo, nombre, carnet, porcentaje de trabajo
+
+- Josué Vinicio Jerez Gómez 9490-22-1479 100%
+- Mario Roberto Rompich Yoc 9490-17-17052 100%
+
+
